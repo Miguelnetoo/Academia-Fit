@@ -1,0 +1,349 @@
+/* ===========================
+   RESET
+=========================== */
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:Arial, Helvetica, sans-serif;
+}
+
+body{
+    background:#121212;
+    color:#fff;
+    line-height:1.5;
+}
+
+/* ===========================
+   HEADER
+=========================== */
+
+.topo{
+    width:100%;
+    background:#1b1b1b;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    padding:20px 40px;
+    box-shadow:0 2px 10px rgba(0,0,0,.3);
+}
+
+.topo h1{
+    font-size:32px;
+    color:#00ff88;
+}
+
+.usuario-area{
+    display:flex;
+    align-items:center;
+    gap:15px;
+}
+
+#nomeUsuario{
+    font-size:17px;
+    font-weight:bold;
+}
+
+/* ===========================
+   BOTÕES
+=========================== */
+
+.btn-adicionar,
+.btn-sair{
+    border:none;
+    border-radius:10px;
+    cursor:pointer;
+    font-weight:bold;
+    transition:.3s;
+}
+
+.btn-adicionar{
+    background:#00c853;
+    color:white;
+    padding:12px 22px;
+    font-size:16px;
+}
+
+.btn-adicionar:hover{
+    background:#00b248;
+    transform:translateY(-2px);
+}
+
+.btn-sair{
+    background:#e53935;
+    color:white;
+    padding:10px 18px;
+}
+
+.btn-sair:hover{
+    background:#d32f2f;
+    transform:translateY(-2px);
+}
+
+/* ===========================
+   ÁREA ADICIONAR TREINO
+=========================== */
+
+.adicionar-treino{
+    width:90%;
+    max-width:1300px;
+    margin:35px auto;
+    background:#1e1e1e;
+    padding:25px;
+    border-radius:15px;
+}
+
+.adicionar-treino h2{
+    margin-bottom:20px;
+    color:#00ff88;
+}
+
+.controles{
+    display:flex;
+    gap:15px;
+    flex-wrap:wrap;
+}
+
+.campo{
+    flex:1;
+    min-width:220px;
+    padding:13px 15px;
+    background:#2b2b2b;
+    color:white;
+    border:none;
+    border-radius:10px;
+    font-size:16px;
+}
+
+.campo:focus{
+    outline:none;
+    box-shadow:0 0 8px rgba(0,255,136,.4);
+}
+
+/* ===========================
+   MAIN
+=========================== */
+
+main{
+    width:90%;
+    max-width:1300px;
+    margin:auto;
+    padding-bottom:40px;
+}
+
+main h2{
+    margin-bottom:25px;
+    color:#00ff88;
+}
+
+/* ===========================
+   CARD DO DIA
+=========================== */
+
+.card-dia{
+    background:#1e1e1e;
+    border-radius:15px;
+    padding:20px;
+    margin-bottom:30px;
+}
+
+.card-dia h2{
+    margin-bottom:20px;
+    color:#00ff88;
+}
+
+/* ===========================
+   LISTA DE EXERCÍCIOS
+=========================== */
+
+.lista-exercicios{
+    display:flex;
+    flex-wrap:nowrap;      /* Nunca quebra para a próxima linha */
+    gap:15px;
+    overflow-x:auto;       /* Cria rolagem horizontal */
+    padding-bottom:10px;
+}
+
+.lista-exercicios::-webkit-scrollbar{
+    height:8px;
+}
+
+.lista-exercicios::-webkit-scrollbar-thumb{
+    background:#00c853;
+    border-radius:10px;
+}
+
+/* ===========================
+   CARD EXERCÍCIO
+=========================== */
+
+.exercicio{
+    flex:0 0 calc(50% - 15px);
+    min-width:220px;
+    flex-shrink:0;  
+    max-width:calc(50% - 15px);
+    background:#2a2a2a;
+    padding:15px;
+    border-radius:10px;
+}
+.exercicio:hover{
+    transform:translateY(-5px);
+    box-shadow:0 5px 20px rgba(0,255,136,.15);
+}
+
+.exercicio h3{
+    margin-bottom:10px;
+    color:#fff;
+}
+
+.exercicio p{
+    color:#cfcfcf;
+    margin-bottom:10px;
+}
+
+.gif-exercicio,
+.exercicio img{
+    width:100%;
+    height:180px;
+    object-fit:cover;
+    border-radius:10px;
+}
+
+/* ===========================
+   LINHA
+=========================== */
+
+hr{
+    width:90%;
+    max-width:1300px;
+    margin:25px auto;
+    border:none;
+    border-top:1px solid #333;
+}
+
+/* ===========================
+   TABLETS
+=========================== */
+
+@media (max-width:992px){
+
+    .topo{
+        padding:20px;
+    }
+
+    .topo h1{
+        font-size:28px;
+    }
+
+}
+
+/* ===========================
+   CELULARES
+=========================== */
+
+@media (max-width:768px){
+
+    .exercicio{
+        flex:0 0 48%;
+        max-width:48%;
+    }
+
+    .gif-exercicio,
+    .exercicio img{
+        width:100%;
+        height:120px;
+        object-fit:cover;
+    }
+
+    .topo{
+        flex-direction:column;
+        gap:20px;
+        text-align:center;
+    }
+
+    .usuario-area{
+        flex-direction:column;
+        width:100%;
+    }
+
+    .controles{
+        flex-direction:column;
+    }
+
+    .campo{
+        width:100%;
+        min-width:100%;
+    }
+
+    .btn-adicionar{
+        width:100%;
+    }
+
+    .btn-sair{
+        width:100%;
+    }
+
+    .adicionar-treino{
+        width:95%;
+    }
+
+    main{
+        width:95%;
+    }
+
+    hr{
+        width:95%;
+    }
+
+}
+
+/* ===========================
+   CELULARES PEQUENOS
+=========================== */
+
+@media (max-width:480px){
+
+    .exercicio{
+        flex:0 0 48%;
+        max-width:48%;
+    }
+
+    .gif-exercicio,
+    .exercicio img{
+        width:100%;
+        height:120px;
+        object-fit:cover;
+    }
+
+    .topo{
+        padding:15px;
+    }
+
+    .topo h1{
+        font-size:24px;
+    }
+
+    #nomeUsuario{
+        font-size:15px;
+    }
+
+    .btn-adicionar,
+    .btn-sair{
+        font-size:15px;
+        padding:12px;
+    }
+
+    .adicionar-treino{
+        padding:18px;
+    }
+
+    .card-dia{
+        padding:15px;
+    }
+
+    .exercicio{
+        padding:12px;
+    }
+
+}

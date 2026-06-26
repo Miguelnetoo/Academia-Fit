@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard - Academia Fit</title>
+
+    <link rel="stylesheet" href="css/dashboard.css">
+</head>
+
+<body>
+
+    <header class="topo">
+
+        <h1>Academia Fit</h1>
+
+        <div class="usuario-area">
+
+            <span id="nomeUsuario">
+                Carregando...
+            </span>
+
+            <button id="logout" class="btn-sair">
+                🚪 Sair
+            </button>
+
+        </div>
+
+    </header>
+
+    <section class="adicionar-treino">
+
+    <h2>Adicionar Exercício</h2>
+
+    <div class="controles">
+
+        <select id="diaSemana" class="campo">
+            <option value="segunda">📅 Segunda</option>
+            <option value="terca">📅 Terça</option>
+            <option value="quarta">📅 Quarta</option>
+            <option value="quinta">📅 Quinta</option>
+            <option value="sexta">📅 Sexta</option>
+            <option value="sabado">📅 Sábado</option>
+            <option value="domingo">📅 Domingo</option>
+        </select>
+
+        <select id="listaExercicios" class="campo">
+        </select>
+
+
+        <button id="adicionarExercicio" class="btn-adicionar">
+            ➕ Adicionar Exercício
+        </button>
+
+    </div>
+
+</section>
+
+    <hr>
+
+    <main class="container">
+
+        <h2>Meus Treinos</h2>
+
+        <div id="areaTreino">
+
+        </div>
+
+    </main>
+
+    <script type="module" src="js/dashboard.js"></script>
+
+</body>
+
+</html>
