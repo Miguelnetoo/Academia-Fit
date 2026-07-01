@@ -105,6 +105,13 @@ btnAdicionar.addEventListener(
                 "listaExercicios"
             ).value;
 
+            const peso =
+            Number(
+            document.getElementById(
+                "pesoExercicio"
+            ).value
+            );
+
             console.log("Usuário:", usuarioAtual);
             console.log("Dia:", dia);
             console.log("Exercício:", exercicio);
@@ -125,7 +132,10 @@ btnAdicionar.addEventListener(
                 usuarioRef,
                 {
                     [`treinos.${dia}`]:
-                    arrayUnion(exercicio)
+                    arrayUnion({
+                        nome: exercicio,
+                        peso: peso
+                    })
                 }
             );
 
@@ -239,10 +249,10 @@ function renderizarTreinos(treinos) {
             const listaExercicios =
                 card.querySelector(".lista-exercicios");
 
-            treinos[dia].forEach(exercicio => {
+            treinos[dia].forEach(item => {
 
                 const info =
-                exerciciosInfo[exercicio];
+                exerciciosInfo[item.nome];
 
                 const gif =
                 info?.gif ||
@@ -255,16 +265,19 @@ function renderizarTreinos(treinos) {
                 listaExercicios.innerHTML += `
                     <div class="exercicio">
 
-                    <h3>${exercicio}</h3>
+                    <h3>${item.nome}</h3>
 
                 <p>
                     Grupo muscular:
                     ${grupo}
                 </p>
+                <p>
+                    Peso: ${item.peso} kg
+                </p>
 
                     <img
                         src="${gif}"
-                        alt="${exercicio}"
+                        alt="${item.nome}"
                         class="gif-exercicio"
                     >
 

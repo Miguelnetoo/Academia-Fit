@@ -206,7 +206,8 @@ main h2{
 .exercicio img{
     width:100%;
     height:180px;
-    object-fit:cover;
+    object-fit:contain;
+    background:#fff;
     border-radius:10px;
 }
 
@@ -252,9 +253,11 @@ hr{
     .gif-exercicio,
     .exercicio img{
         width:100%;
-        height:120px;
-        object-fit:cover;
-    }
+        height:180px;
+        object-fit:contain;
+        background:#fff;
+        border-radius:10px;
+}
 
     .topo{
         flex-direction:column;
@@ -312,9 +315,11 @@ hr{
     .gif-exercicio,
     .exercicio img{
         width:100%;
-        height:120px;
-        object-fit:cover;
-    }
+        height:180px;
+        object-fit:contain;
+        background:#fff;
+        border-radius:10px;
+}
 
     .topo{
         padding:15px;
