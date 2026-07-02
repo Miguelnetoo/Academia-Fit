@@ -222,12 +222,78 @@ async function carregarUsuario() {
 
 }
 
+async function excluirExercicio(dia, indice) {
+
+    const usuarioRef = doc(
+        db,
+        "usuarios",
+        usuarioAtual.uid
+    );
+
+    const usuarioSnap =
+    await getDoc(usuarioRef);
+
+    let treinos =
+    usuarioSnap.data().treinos;
+
+    treinos[dia].splice(indice,1);
+
+    await updateDoc(usuarioRef,{
+        treinos:treinos
+    });
+
+    carregarUsuario();
+
+}
+
+async function editarPeso(
+    dia,
+    indice,
+    novoPeso
+){
+
+    const usuarioRef =
+    doc(
+        db,
+        "usuarios",
+        usuarioAtual.uid
+    );
+
+    const usuarioSnap =
+    await getDoc(usuarioRef);
+
+    let treinos =
+    usuarioSnap.data().treinos;
+
+    treinos[dia][indice].peso =
+    Number(novoPeso);
+
+    await updateDoc(usuarioRef,{
+        treinos:treinos
+    });
+
+    carregarUsuario();
+
+}
+
 // Renderiza treinos na tela
 function renderizarTreinos(treinos) {
 
     areaTreino.innerHTML = "";
 
-    for (const dia in treinos) {
+    const diasSemana = [
+    "segunda",
+    "terca",
+    "quarta",
+    "quinta",
+    "sexta",
+    "sabado",
+    "domingo"
+    ];
+
+    diasSemana.forEach(dia => {
+
+    if (!treinos[dia]) return;
 
         const card =
         document.createElement("div");
@@ -249,7 +315,7 @@ function renderizarTreinos(treinos) {
             const listaExercicios =
                 card.querySelector(".lista-exercicios");
 
-            treinos[dia].forEach(item => {
+            treinos[dia].forEach((item,indice) => {
 
                 const info =
                 exerciciosInfo[item.nome];
@@ -262,37 +328,117 @@ function renderizarTreinos(treinos) {
                 info?.grupo ||
                 "Não definido";
 
-                listaExercicios.innerHTML += `
-                    <div class="exercicio">
+            listaExercicios.innerHTML += `
 
-                    <h3>${item.nome}</h3>
+                <div class="exercicio">
+
+                <h3>${item.nome}</h3>
 
                 <p>
-                    Grupo muscular:
-                    ${grupo}
-                </p>
-                <p>
-                    Peso: ${item.peso} kg
+                Grupo muscular:
+                ${grupo}
                 </p>
 
-                    <img
-                        src="${gif}"
-                        alt="${item.nome}"
-                        class="gif-exercicio"
-                    >
+                <label>Peso (kg)</label>
+
+                <input
+                    type="number"
+                    class="peso-input"
+                    value="${item.peso}"
+                    data-dia="${dia}"
+                    data-indice="${indice}"
+                >
+
+                <div class="botoes-card">
+
+                    <button
+                        class="btn-salvar"
+                        data-dia="${dia}"
+                        data-indice="${indice}">
+                        💾 Salvar
+                    </button>
+
+                    <button
+                        class="btn-excluir"
+                        data-dia="${dia}"
+                        data-indice="${indice}">
+                        🗑 Excluir
+                    </button>
 
                 </div>
-            `;
 
+                <img
+
+                src="${gif}"
+
+                class="gif-exercicio"
+
+                >
+
+                </div>
+
+                `;
             });
 
         }
 
         areaTreino.appendChild(card);
 
-    }
+        card.querySelectorAll(".btn-excluir")
+            .forEach(botao=>{
 
-}
+            botao.onclick=()=>{
+
+            const dia=
+            botao.dataset.dia;
+
+            const indice=
+            Number(
+            botao.dataset.indice
+            );
+
+            excluirExercicio(
+            dia,
+            indice
+            );
+
+            };
+
+            });
+
+        card.querySelectorAll(".btn-salvar")
+            .forEach(botao=>{
+
+            botao.onclick=()=>{
+
+            const dia=
+            botao.dataset.dia;
+
+            const indice=
+            Number(
+            botao.dataset.indice
+            );
+
+            const input =
+            card.querySelectorAll(".peso-input")[indice];
+
+            editarPeso(
+
+            dia,
+
+            indice,
+
+            input.value
+
+            );
+
+            };
+
+            });
+
+});
+
+    }
 
 // Logout
 btnLogout.addEventListener(

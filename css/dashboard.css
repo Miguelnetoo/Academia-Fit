@@ -212,6 +212,86 @@ main h2{
 }
 
 /* ===========================
+   BOTÕES DO CARD
+=========================== */
+
+.peso-input{
+    width:100%;
+    padding:10px;
+    margin:10px 0;
+    border:none;
+    border-radius:8px;
+    background:#1f1f1f;
+    color:#fff;
+    font-size:15px;
+    border:1px solid #444;
+}
+
+.peso-input:focus{
+    outline:none;
+    border-color:#00ff88;
+    box-shadow:0 0 8px rgba(0,255,136,.3);
+}
+
+.botoes-card{
+    display:flex;
+    gap:10px;
+    margin:15px 0;
+}
+
+.btn-salvar,
+.btn-excluir{
+
+    flex:1;
+
+    border:none;
+
+    padding:10px;
+
+    border-radius:8px;
+
+    cursor:pointer;
+
+    font-size:15px;
+
+    font-weight:bold;
+
+    transition:.3s;
+}
+
+.btn-salvar{
+
+    background:#00c853;
+
+    color:white;
+
+}
+
+.btn-salvar:hover{
+
+    background:#00b248;
+
+    transform:translateY(-2px);
+
+}
+
+.btn-excluir{
+
+    background:#e53935;
+
+    color:white;
+
+}
+
+.btn-excluir:hover{
+
+    background:#c62828;
+
+    transform:translateY(-2px);
+
+}
+
+/* ===========================
    LINHA
 =========================== */
 
