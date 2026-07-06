@@ -10,10 +10,9 @@
   {"nome":"Flexão de Braço","grupo":"Peito","gif":"gifs/FlexaoDeBracos.gif"},
   {"nome":"Pullover com Barra.","grupo":"Peito","gif":"gifs/PullOvercomBarra.gif"},
 
-  {"nome":"Puxada Frontal","grupo":"Costas","gif":"gifs/PuxadaFrontal.gif"},
-  {"nome":"Puxada Aberta","grupo":"Costas","gif":"gifs/PuxadaAberta.gif"},
-  {"nome":"Puxada Supinada","grupo":"Costas","gif":"gifs/PuxadaSupinada.gif"},
-  {"nome":"Remada Curvada","grupo":"Costas","gif":"gifs/RemadaCurvada.gif"},
+  {"nome":"Puxada Frente","grupo":"Costas","gif":"gifs/PuxadaFrente.gif"},
+  {"nome":"Puxada Frente Supinada","grupo":"Costas","gif":"gifs/PuxadaFrenteSupinada.gif"},
+  {"nome":"Remada Triangulo","grupo":"Costas","gif":"gifs/RemadaTriangulo.gif"},
   {"nome":"Remada Baixa","grupo":"Costas","gif":"gifs/RemadaBaixa.gif"},
   {"nome":"Remada Cavalinho","grupo":"Costas","gif":"gifs/RemadaCavalinho.gif"},
   {"nome":"Remada Unilateral","grupo":"Costas","gif":"gifs/RemadaUnilateral.gif"},
@@ -87,7 +86,7 @@
   {"nome":"Canivete","grupo":"Abdômen","gif":"gifs/Canivete.gif"},
   {"nome":"Mountain Climber","grupo":"Abdômen","gif":"gifs/MountainClimber.gif"},
 
-  {"nome":"Esteira Caminhada","grupo":"Cardio","gif":"gifs/EsteiraCaminhada.gif"},
+  {"nome":"Esteira","grupo":"Cardio","gif":"gifs/Esteira.gif"},
   {"nome":"Esteira Corrida","grupo":"Cardio","gif":"gifs/EsteiraCorrida.gif"},
   {"nome":"Bicicleta Ergométrica","grupo":"Cardio","gif":"gifs/BicicletaErgometrica.gif"},
   {"nome":"Elíptico","grupo":"Cardio","gif":"gifs/Eliptico.gif"},
