@@ -81,7 +81,7 @@ async function adicionarExercicio() {
         const exercicio =
             $("listaExercicios").value;
 
-        const peso =
+        const valor =
             Number($("pesoExercicio").value);
 
         const usuarioRef =
@@ -97,7 +97,7 @@ async function adicionarExercicio() {
                 arrayUnion({
 
                     nome: exercicio,
-                    peso: peso
+                    valor: valor
 
                 })
 

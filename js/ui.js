@@ -58,6 +58,25 @@ export function renderizarTreinos(
                 info?.grupo ||
                 "Não definido";
 
+                const tipo =
+                    info?.tipo || "peso";
+
+                let texto = "";
+
+                if (tipo === "peso") {
+
+                    texto = "Peso (kg)";
+
+                } else if (tipo === "tempo") {
+
+                    texto = "Tempo (min)";
+
+                } else if (tipo === "distancia") {
+
+                    texto = "Distância (km)";
+
+                }
+
             listaExercicios.innerHTML += `
 
                 <div class="exercicio">
@@ -69,12 +88,12 @@ export function renderizarTreinos(
                 ${grupo}
                 </p>
 
-                <label>Peso (kg)</label>
+                <label>${texto}</label>
 
                 <input
                     type="number"
                     class="peso-input"
-                    value="${item.peso}"
+                    value="${item.valor}"
                     data-dia="${dia}"
                     data-indice="${indice}"
                 >

@@ -30,7 +30,8 @@ async function carregarExercicios() {
         exerciciosInfo[exercicio.nome] = {
 
             gif: exercicio.gif,
-            grupo: exercicio.grupo
+            grupo: exercicio.grupo,
+            tipo: exercicio.tipo
 
         };
 
