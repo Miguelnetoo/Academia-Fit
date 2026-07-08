@@ -17,6 +17,7 @@ export function renderizarTreinos(
     exerciciosInfo,
     excluirExercicio,
     editarPeso, 
+    editarSeries,
     usuarioAtual
 ){
     areaTreino.innerHTML = "";
@@ -98,6 +99,16 @@ export function renderizarTreinos(
                     data-indice="${indice}"
                 >
 
+                <label>Séries</label>
+
+                <input
+                    type="number"
+                    class="series-input"
+                    value="${item.series || 0}"
+                    data-dia="${dia}"
+                    data-indice="${indice}"
+                >
+
                 <div class="botoes-card">
 
                     <button
@@ -165,19 +176,24 @@ export function renderizarTreinos(
                 const indice =
                 Number(botao.dataset.indice);
 
-                const input =
-                card.querySelectorAll(".peso-input")[indice];
+                const peso =
+                    card.querySelectorAll(".peso-input")[indice].value;
+
+                const series =
+                    card.querySelectorAll(".series-input")[indice].value;
 
                 await editarPeso(
-
                     usuarioAtual,
-
                     dia,
-
                     indice,
+                    peso
+                );
 
-                    input.value
-
+                await editarSeries(
+                    usuarioAtual,
+                    dia,
+                    indice,
+                    series
                 );
 
                 location.reload();

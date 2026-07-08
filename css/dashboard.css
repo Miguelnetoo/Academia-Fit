@@ -215,7 +215,8 @@ main h2{
    BOTÕES DO CARD
 =========================== */
 
-.peso-input{
+.peso-input,
+.series-input{
     width:100%;
     padding:10px;
     margin:10px 0;

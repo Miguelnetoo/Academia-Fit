@@ -23,6 +23,7 @@ import {
 import {
     carregarUsuario,
     editarPeso,
+    editarSeries,
     excluirExercicio
 } from "./firestore.js";
 
@@ -84,6 +85,9 @@ async function adicionarExercicio() {
         const valor =
             Number($("pesoExercicio").value);
 
+        const series =
+            Number($("seriesExercicio").value);
+
         const usuarioRef =
             doc(
                 db,
@@ -91,17 +95,25 @@ async function adicionarExercicio() {
                 usuarioAtual.uid
             );
 
-        await updateDoc(usuarioRef, {
+        console.log("Vai salvar...");
+        console.log(dia);
+        console.log(exercicio);
+        console.log(valor);
+
+        await updateDoc(usuarioRef,{
 
             [`treinos.${dia}`]:
-                arrayUnion({
+            arrayUnion({
 
-                    nome: exercicio,
-                    valor: valor
+                nome: exercicio,
+                valor: valor,
+                series: series
 
-                })
+            })
 
         });
+
+console.log("Salvou com sucesso!");
 
         await atualizarTela();
 
@@ -130,6 +142,7 @@ async function atualizarTela() {
     exerciciosInfo,
     excluirExercicio,
     editarPeso,
+    editarSeries,
     usuarioAtual
 );
 

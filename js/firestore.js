@@ -70,8 +70,34 @@ async function editarPeso(
     const treinos =
         await getTreinos(usuarioAtual);
 
-    treinos[dia][indice].peso =
-        Number(novoPeso);
+    treinos[dia][indice].valor =
+    Number(novoPeso);
+
+    await updateDoc(
+        getUsuarioRef(usuarioAtual),
+        {
+            treinos: treinos
+        }
+    );
+
+}
+
+/* ===========================
+   EDITAR SERIES
+=========================== */
+
+async function editarSeries(
+    usuarioAtual,
+    dia,
+    indice,
+    novaSerie
+){
+
+    const treinos =
+        await getTreinos(usuarioAtual);
+
+    treinos[dia][indice].series =
+        Number(novaSerie);
 
     await updateDoc(
         getUsuarioRef(usuarioAtual),
@@ -115,6 +141,7 @@ export {
     carregarUsuario,
     getTreinos,
     editarPeso,
+    editarSeries,
     excluirExercicio,
     getUsuarioRef
 
