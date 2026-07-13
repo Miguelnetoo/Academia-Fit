@@ -62,6 +62,7 @@ async function getTreinos(usuarioAtual) {
 
 async function editarPeso(
     usuarioAtual,
+    mes,
     dia,
     indice,
     novoPeso
@@ -70,13 +71,13 @@ async function editarPeso(
     const treinos =
         await getTreinos(usuarioAtual);
 
-    treinos[dia][indice].valor =
-    Number(novoPeso);
+     treinos[mes][dia][indice].valor =
+        Number(novoPeso);
 
     await updateDoc(
         getUsuarioRef(usuarioAtual),
         {
-            treinos: treinos
+            treinos
         }
     );
 
@@ -88,6 +89,7 @@ async function editarPeso(
 
 async function editarSeries(
     usuarioAtual,
+    mes,
     dia,
     indice,
     novaSerie
@@ -96,13 +98,13 @@ async function editarSeries(
     const treinos =
         await getTreinos(usuarioAtual);
 
-    treinos[dia][indice].series =
+    treinos[mes][dia][indice].series =
         Number(novaSerie);
 
     await updateDoc(
         getUsuarioRef(usuarioAtual),
         {
-            treinos: treinos
+            treinos
         }
     );
 
@@ -114,6 +116,7 @@ async function editarSeries(
 
 async function excluirExercicio(
     usuarioAtual,
+    mes,
     dia,
     indice
 ) {
@@ -121,12 +124,12 @@ async function excluirExercicio(
     const treinos =
         await getTreinos(usuarioAtual);
 
-    treinos[dia].splice(indice, 1);
+    treinos[mes][dia].splice(indice,1);
 
     await updateDoc(
         getUsuarioRef(usuarioAtual),
         {
-            treinos: treinos
+            treinos
         }
     );
 

@@ -293,6 +293,29 @@ main h2{
 }
 
 /* ===========================
+   INPUT MÊS
+=========================== */
+
+#mesTreino{
+    cursor:pointer;
+    font-weight:600;
+    color:#fff;
+}
+
+/* Ícone do calendário (Chrome/Edge) */
+#mesTreino::-webkit-calendar-picker-indicator{
+    cursor:pointer;
+    filter:invert(1);
+    opacity:.8;
+    transition:.3s;
+}
+
+#mesTreino::-webkit-calendar-picker-indicator:hover{
+    opacity:1;
+    transform:scale(1.1);
+}
+
+/* ===========================
    LINHA
 =========================== */
 

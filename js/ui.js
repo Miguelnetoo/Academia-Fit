@@ -18,7 +18,9 @@ export function renderizarTreinos(
     excluirExercicio,
     editarPeso, 
     editarSeries,
-    usuarioAtual
+    usuarioAtual,
+    mes,
+    atualizarTela
 ){
     areaTreino.innerHTML = "";
 
@@ -154,13 +156,19 @@ export function renderizarTreinos(
                 const indice =
                 Number(botao.dataset.indice);
 
+                const mes =
+                document.getElementById("mesTreino").value;
+
                 await excluirExercicio(
                     usuarioAtual,
+                    mes,
                     dia,
                     indice
                 );
 
-                location.reload();
+                await atualizarTela();
+
+                alert("Exercício excluído com sucesso!");
 
             };
 
@@ -182,8 +190,12 @@ export function renderizarTreinos(
                 const series =
                     card.querySelectorAll(".series-input")[indice].value;
 
+                const mes =
+                document.getElementById("mesTreino").value;
+
                 await editarPeso(
                     usuarioAtual,
+                    mes,
                     dia,
                     indice,
                     peso
@@ -191,13 +203,15 @@ export function renderizarTreinos(
 
                 await editarSeries(
                     usuarioAtual,
+                    mes,
                     dia,
                     indice,
                     series
                 );
 
-                location.reload();
-
+                await atualizarTela();
+                
+                alert("Alterado com sucesso!");
             };
 
             });

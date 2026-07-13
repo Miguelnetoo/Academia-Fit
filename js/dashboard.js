@@ -40,6 +40,10 @@ const $ = (id) => document.getElementById(id);
 const nomeUsuario = $("nomeUsuario");
 const btnAdicionar = $("adicionarExercicio");
 const btnLogout = $("logout");
+const hoje = new Date();
+
+$("mesTreino").value =
+    hoje.toISOString().slice(0, 7);
 
 /* ===========================
    VARIÁVEIS
@@ -69,6 +73,12 @@ btnAdicionar.addEventListener("click", adicionarExercicio);
 
 btnLogout.addEventListener("click", logout);
 
+$("mesTreino").addEventListener("change", () => {
+
+    atualizarTela();
+
+});
+
 /* ===========================
    FUNÇÕES
 =========================== */
@@ -78,6 +88,9 @@ async function adicionarExercicio() {
     try {
 
         const dia = $("diaSemana").value;
+
+        const mes =
+        $("mesTreino").value;
 
         const exercicio =
             $("listaExercicios").value;
@@ -102,7 +115,7 @@ async function adicionarExercicio() {
 
         await updateDoc(usuarioRef,{
 
-            [`treinos.${dia}`]:
+            [`treinos.${mes}.${dia}`]:
             arrayUnion({
 
                 nome: exercicio,
@@ -132,18 +145,34 @@ console.log("Salvou com sucesso!");
 async function atualizarTela() {
 
     const dados =
-        await carregarUsuario(usuarioAtual);
+    await carregarUsuario(usuarioAtual);
+
+    const mes =
+        $("mesTreino").value;
+
+    const treinosMes =
+    dados.treinos?.[mes] || {
+        segunda: [],
+        terca: [],
+        quarta: [],
+        quinta: [],
+        sexta: [],
+        sabado: [],
+        domingo: []
+    };
 
     nomeUsuario.textContent =
         `Olá, ${dados.nome}`;
 
     renderizarTreinos(
-    dados.treinos,
-    exerciciosInfo,
-    excluirExercicio,
-    editarPeso,
-    editarSeries,
-    usuarioAtual
+        treinosMes,
+        exerciciosInfo,
+        excluirExercicio,
+        editarPeso,
+        editarSeries,
+        usuarioAtual,
+        mes,
+        atualizarTela
 );
 
 }

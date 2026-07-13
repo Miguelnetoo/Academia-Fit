@@ -2,7 +2,7 @@
   {"nome":"Supino Reto","grupo":"Peito","gif":"gifs/SupinoRetocomBarra.gif", "tipo":"peso"},
   {"nome":"Supino Inclinado","grupo":"Peito","gif":"gifs/SupinoInclinadocomBarra.gif", "tipo":"peso"},
   {"nome":"Supino Declinado","grupo":"Peito","gif":"gifs/SupinoDeclinado.gif", "tipo":"peso"},
-  {"nome":"Supino Articulado Inclinado","grupo":"Peito","gif":"gifs/SupinoArticuladoInclinado.gif", "tipo":"peso"},
+  {"nome":"Supino Articulado Inclinado","grupo":"Peito","gif":"gifs/SupinoInclinadoArticulado.gif", "tipo":"peso"},
   {"nome":"Crucifixo Articulado Inclinado","grupo":"Peito","gif":"gifs/CrucifixoArticuladoInclinado.gif", "tipo":"peso"},
   {"nome":"Crucifixo no Voador","grupo":"Peito","gif":"gifs/CrucifixonoVoador.gif", "tipo":"peso"},
   {"nome":"Crucifixo Declinado com Halteres","grupo":"Peito","gif":"gifs/CrucifixoDeclinadocomHalteres.gif", "tipo":"peso"},
