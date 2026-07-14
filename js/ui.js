@@ -1,5 +1,4 @@
-const areaTreino =
-document.getElementById("areaTreino");
+const areaTreino = document.getElementById("areaTreino");
 
 const DIAS_SEMANA = [
     "segunda",
@@ -11,211 +10,207 @@ const DIAS_SEMANA = [
     "domingo"
 ];
 
-// Renderiza treinos na tela
+// ===========================
+// RENDERIZA TREINOS
+// ===========================
+
 export function renderizarTreinos(
     treinos,
     exerciciosInfo,
     excluirExercicio,
-    editarPeso, 
-    editarSeries,
+    editarExercicio,
     usuarioAtual,
     mes,
     atualizarTela
-){
+) {
+
     areaTreino.innerHTML = "";
 
-    DIAS_SEMANA.forEach(dia => {
+    DIAS_SEMANA.forEach((dia) => {
 
-    if (!treinos[dia]) return;
-
-        const card =
-        document.createElement("div");
-
+        const card = document.createElement("div");
         card.classList.add("card-dia");
 
         card.innerHTML = `
-            <h2>${dia.toUpperCase()}</h2>
+            <div class="cabecalho-dia">
+
+                <h2>${dia.toUpperCase()}</h2>
+
+                <button
+                    class="btn-salvar-dia">
+                    💾 Salvar Dia
+                </button>
+
+            </div>
+
             <div class="lista-exercicios"></div>
         `;
 
-        if (treinos[dia].length === 0) {
+        const listaExercicios =
+            card.querySelector(".lista-exercicios");
 
-            card.innerHTML +=
-            "<p>Nenhum exercício cadastrado.</p>";
+        if (!treinos[dia] || treinos[dia].length === 0) {
+
+            listaExercicios.innerHTML =
+                "<p>Nenhum exercício cadastrado.</p>";
 
         } else {
 
-            const listaExercicios =
-                card.querySelector(".lista-exercicios");
-
-            treinos[dia].forEach((item,indice) => {
+            treinos[dia].forEach((item, indice) => {
 
                 const info =
-                exerciciosInfo[item.nome];
+                    exerciciosInfo[item.nome];
 
                 const gif =
-                info?.gif ||
-                "gifs/padrao.gif";
+                    info?.gif || "gifs/padrao.gif";
 
                 const grupo =
-                info?.grupo ||
-                "Não definido";
+                    info?.grupo || "Não definido";
 
                 const tipo =
                     info?.tipo || "peso";
 
-                let texto = "";
+                let texto = "Peso (kg)";
 
-                if (tipo === "peso") {
-
-                    texto = "Peso (kg)";
-
-                } else if (tipo === "tempo") {
+                if (tipo === "tempo") {
 
                     texto = "Tempo (min)";
 
-                } else if (tipo === "distancia") {
+                }
+
+                if (tipo === "distancia") {
 
                     texto = "Distância (km)";
 
                 }
 
-            listaExercicios.innerHTML += `
+                listaExercicios.innerHTML += `
 
                 <div class="exercicio">
 
-                <h3>${item.nome}</h3>
+                    <h3>${item.nome}</h3>
 
-                <p>
-                Grupo muscular:
-                ${grupo}
-                </p>
+                    <p>Grupo muscular: ${grupo}</p>
 
-                <label>${texto}</label>
+                    <label>${texto}</label>
 
-                <input
-                    type="number"
-                    class="peso-input"
-                    value="${item.valor}"
-                    data-dia="${dia}"
-                    data-indice="${indice}"
-                >
+                    <input
+                        type="number"
+                        class="peso-input"
+                        value="${item.valor ?? 0}"
+                    >
 
-                <label>Séries</label>
+                    <label>Séries</label>
 
-                <input
-                    type="number"
-                    class="series-input"
-                    value="${item.series || 0}"
-                    data-dia="${dia}"
-                    data-indice="${indice}"
-                >
+                    <input
+                        type="number"
+                        class="series-input"
+                        value="${item.series ?? 0}"
+                    >
 
-                <div class="botoes-card">
+                    <div class="botoes-card">
 
-                    <button
-                        class="btn-salvar"
-                        data-dia="${dia}"
-                        data-indice="${indice}">
-                        💾 Salvar
-                    </button>
+                        <button
+                            class="btn-excluir"
+                            data-indice="${indice}">
+                            🗑 Excluir
+                        </button>
 
-                    <button
-                        class="btn-excluir"
-                        data-dia="${dia}"
-                        data-indice="${indice}">
-                        🗑 Excluir
-                    </button>
+                    </div>
 
-                </div>
-
-                <img
-
-                src="${gif}"
-
-                class="gif-exercicio"
-
-                >
+                    <img
+                        src="${gif}"
+                        class="gif-exercicio">
 
                 </div>
 
                 `;
+
             });
 
         }
 
         areaTreino.appendChild(card);
 
+        //==========================
+        // BOTÃO SALVAR DIA
+        //==========================
+
+        const btnSalvarDia =
+            card.querySelector(".btn-salvar-dia");
+
+        btnSalvarDia.onclick = async () => {
+
+            const pesos =
+                card.querySelectorAll(".peso-input");
+
+            const series =
+                card.querySelectorAll(".series-input");
+
+            try {
+
+                for (let i = 0; i < pesos.length; i++) {
+
+                    await editarExercicio(
+
+                        usuarioAtual,
+                        mes,
+                        dia,
+                        i,
+                        pesos[i].value,
+                        series[i].value
+
+                    );
+
+                }
+
+                await atualizarTela();
+
+                alert("Treino salvo com sucesso!");
+
+            } catch (erro) {
+
+                alert(erro.message);
+
+            }
+
+        };
+
+        //==========================
+        // BOTÃO EXCLUIR
+        //==========================
+
         card.querySelectorAll(".btn-excluir")
-            .forEach(botao=>{
+            .forEach(botao => {
 
-            botao.onclick = async () => {
+                botao.onclick = async () => {
 
-                const dia = botao.dataset.dia;
+                    const indice =
+                        Number(botao.dataset.indice);
 
-                const indice =
-                Number(botao.dataset.indice);
+                    try {
 
-                const mes =
-                document.getElementById("mesTreino").value;
+                        await excluirExercicio(
+                            usuarioAtual,
+                            mes,
+                            dia,
+                            indice
+                        );
 
-                await excluirExercicio(
-                    usuarioAtual,
-                    mes,
-                    dia,
-                    indice
-                );
+                        await atualizarTela();
 
-                await atualizarTela();
+                        alert("Exercício excluído com sucesso!");
 
-                alert("Exercício excluído com sucesso!");
+                    } catch (erro) {
 
-            };
+                        alert(erro.message);
 
-            });
+                    }
 
-        card.querySelectorAll(".btn-salvar")
-            .forEach(botao=>{
-
-            botao.onclick = async () => {
-
-                const dia = botao.dataset.dia;
-
-                const indice =
-                Number(botao.dataset.indice);
-
-                const peso =
-                    card.querySelectorAll(".peso-input")[indice].value;
-
-                const series =
-                    card.querySelectorAll(".series-input")[indice].value;
-
-                const mes =
-                document.getElementById("mesTreino").value;
-
-                await editarPeso(
-                    usuarioAtual,
-                    mes,
-                    dia,
-                    indice,
-                    peso
-                );
-
-                await editarSeries(
-                    usuarioAtual,
-                    mes,
-                    dia,
-                    indice,
-                    series
-                );
-
-                await atualizarTela();
-                
-                alert("Alterado com sucesso!");
-            };
+                };
 
             });
 
-});
+    });
 
-    }
+}

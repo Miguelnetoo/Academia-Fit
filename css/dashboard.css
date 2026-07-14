@@ -240,7 +240,33 @@ main h2{
     margin:15px 0;
 }
 
-.btn-salvar,
+.btn-salvar-dia{
+    background:#28a745;
+    color:#fff;
+    border:none;
+    border-radius:8px;
+    padding:8px 16px;
+    cursor:pointer;
+    font-size:14px;
+    font-weight:bold;
+    transition:0.3s;
+    margin: 10px;
+}
+
+.btn-salvar-dia:hover{
+    background:#218838;
+    transform:scale(1.03);
+}
+
+.btn-salvar-dia:active{
+    transform:scale(0.98);
+}
+
+.btn-salvar-dia:disabled{
+    background:#777;
+    cursor:not-allowed;
+}
+
 .btn-excluir{
 
     flex:1;
@@ -258,22 +284,6 @@ main h2{
     font-weight:bold;
 
     transition:.3s;
-}
-
-.btn-salvar{
-
-    background:#00c853;
-
-    color:white;
-
-}
-
-.btn-salvar:hover{
-
-    background:#00b248;
-
-    transform:translateY(-2px);
-
 }
 
 .btn-excluir{

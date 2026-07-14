@@ -22,8 +22,7 @@ import {
 
 import {
     carregarUsuario,
-    editarPeso,
-    editarSeries,
+    editarExercicio,
     excluirExercicio
 } from "./firestore.js";
 
@@ -168,8 +167,7 @@ async function atualizarTela() {
         treinosMes,
         exerciciosInfo,
         excluirExercicio,
-        editarPeso,
-        editarSeries,
+        editarExercicio,
         usuarioAtual,
         mes,
         atualizarTela
