@@ -387,6 +387,13 @@ hr{
     .topo h1{
         font-size:28px;
     }
+    .exercicio h3 {
+    font-size: clamp(12px, 1.2vw, 20px);
+    white-space: nowrap;   /* Não quebra a linha */
+    overflow: hidden;      /* Esconde o excesso */
+    text-align: center;
+    color: #00ff88;
+}
 
 }
 
@@ -449,6 +456,13 @@ hr{
     hr{
         width:95%;
     }
+    .exercicio h3 {
+    font-size: clamp(12px, 1.2vw, 20px);
+    white-space: nowrap;   /* Não quebra a linha */
+    overflow: hidden;      /* Esconde o excesso */
+    text-align: center;
+    color: #00ff88;
+}
 
 }
 
@@ -501,5 +515,12 @@ hr{
     .exercicio{
         padding:12px;
     }
+    .exercicio h3 {
+    font-size: clamp(12px, 1.2vw, 20px);
+    white-space: nowrap;   /* Não quebra a linha */
+    overflow: hidden;      /* Esconde o excesso */
+    text-align: center;
+    color: #00ff88;
+}
 
 }
