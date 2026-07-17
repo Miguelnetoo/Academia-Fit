@@ -516,10 +516,9 @@ hr{
         padding:12px;
     }
     .exercicio h3 {
-    font-size: clamp(12px, 1.2vw, 20px);
+    font-size: clamp(15px, 1.2vw, 20px);
     white-space: nowrap;   /* Não quebra a linha */
     overflow: hidden;      /* Esconde o excesso */
-    text-align: center;
     color: #00ff88;
 }
 
